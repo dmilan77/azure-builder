@@ -1,4 +1,3 @@
-FROM debian:buster-20201012-slim
-# FROM debian:stretch-20200327-slim
-COPY upgrade.sh /tmp/upgrade.sh
-RUN /tmp/upgrade.sh
+FROM mcr.microsoft.com/azure-cli
+COPY upgrade-alpine.sh /tmp/upgrade-alpine.sh
+RUN /tmp/upgrade-alpine.sh
