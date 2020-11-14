@@ -1,7 +1,8 @@
 #!/bin/bash
 [ -w /usr/local/bin ] && SUDO="" || SUDO=sudo
-$SUDO apt-get update 
+$SUDO apt-get update
 $SUDO apt-get install \
+    jq \
     curl  -y
 # $SUDO apt-get install \
 #     apt-transport-https \
