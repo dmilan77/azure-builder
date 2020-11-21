@@ -18,14 +18,14 @@ jobs:
           name: alpine
           command: |
             TAG=alpine.$CIRCLE_BUILD_NUM
-            docker build -t dmilan/azure-builder:$TAG -f Dockerfile.alpine .
+            docker build -t dmilan/azure-builder:$TAG -t dmilan/azure-builder:alpine -f Dockerfile.alpine .
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
             docker push dmilan/azure-builder:$TAG
       - run:
           name: debian
           command: |
             TAG=debian.$CIRCLE_BUILD_NUM
-            docker build -t dmilan/azure-builder:$TAG -f Dockerfile.debian .
+            docker build -t dmilan/azure-builder:$TAG  -t dmilan/azure-builder:debian -f Dockerfile.debian .
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
             docker push dmilan/azure-builder:$TAG
 workflows:
