@@ -1,0 +1,32 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.15
+        # auth:
+        #   username: mydockerhub-user
+        #   password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
+
+      # build and push Docker image
+      - alpine: |
+          TAG=alpine.$CIRCLE_BUILD_NUM
+          docker build -t dmilan/azure-builder:$TAG -f Dockerfile.alpine .
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker push dmilan/azure-builder:$TAG
+      - debian: |
+          TAG=debian.$CIRCLE_BUILD_NUM
+          docker build -t dmilan/azure-builder:$TAG -f Dockerfile.debian .
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker push dmilan/azure-builder:$TAG
+workflows:
+  version: 2.1
+  docker-build-push:
+    jobs:
+      - build:
+          context: dockerhub-dmilan

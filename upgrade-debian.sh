@@ -4,20 +4,6 @@ $SUDO apt-get update
 $SUDO apt-get install \
     jq \
     curl  -y
-# $SUDO apt-get install \
-#     apt-transport-https \
-#     ca-certificates \
-#     curl \
-#     gnupg-agent \
-#     software-properties-common -y
-
-# $SUDO curl -fsSL https://download.docker.com/linux/debian/gpg | $SUDO apt-key add -
-# $SUDO add-apt-repository \
-#    "deb [arch=amd64] https://download.docker.com/linux/debian \
-#    $(lsb_release -cs) \
-#    stable"
-# $SUDO apt-get update
-# $SUDO apt-get install docker-ce docker-ce-cli containerd.io
 cd /tmp
 $SUDO curl -sL https://aka.ms/InstallAzureCLIDeb | $SUDO bash
 cd /tmp

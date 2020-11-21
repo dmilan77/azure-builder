@@ -1,0 +1,3 @@
+FROM alpine:3.12.1
+COPY upgrade-alpine.sh /tmp/upgrade-alpine.sh
+RUN /tmp/upgrade-alpine.sh
