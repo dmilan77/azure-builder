@@ -21,6 +21,7 @@ jobs:
             docker build -t dmilan/azure-builder:$TAG -t dmilan/azure-builder:alpine -f Dockerfile.alpine .
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
             docker push dmilan/azure-builder:$TAG
+            docker push dmilan/azure-builder:alpine
       - run:
           name: debian
           command: |
@@ -28,6 +29,7 @@ jobs:
             docker build -t dmilan/azure-builder:$TAG  -t dmilan/azure-builder:debian -f Dockerfile.debian .
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
             docker push dmilan/azure-builder:$TAG
+            docker push dmilan/azure-builder:debian
 workflows:
   version: 2.1
   docker-build-push:
